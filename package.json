@@ -1,0 +1,40 @@
+{
+  "name": "habit_api_test",
+  "version": "1.0.0",
+  "description": "Habit api test",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/almacenero/habit_api_test.git"
+  },
+  "author": "Yasser Quintana Cardenas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/almacenero/habit_api_test/issues"
+  },
+  "homepage": "https://github.com/almacenero/habit_api_test#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.18"
+  },
+  "devDependencies": {
+    "@shelf/jest-mongodb": "^1.2.3",
+    "jest": "^26.6.3"
+  },
+  "jest": {
+    "preset": "@shelf/jest-mongodb"
+  },
+  "config": {
+    "mongodbMemoryServer": {
+      "version": "latest"
+    }
+  }
+}
