@@ -10,6 +10,8 @@ const drugsList = async (req, res) => {
 };
 
 const createDrug = async (req, res) => {
+  const io = req.io;
+
   const drug = Drug({
     name: req.body.name,
     typeDrug: req.body.typeDrug,
@@ -19,6 +21,8 @@ const createDrug = async (req, res) => {
   });
   try {
     const savedDrug = await drug.save();
+    const response = "Hemos creado un cliente nuevo";
+    io.emit("notificación", response);
     res.json(savedDrug);
   } catch (error) {
     res.json({ message: error });
@@ -54,8 +58,11 @@ const findOneDrugAndUpdate = async (req, res) => {
 };
 
 const deleteDrug = async (req, res) => {
+  const io = req.io;
   try {
     const removeDrug = await Drug.remove({ _id: req.params.id });
+    const response = "Hemos eliminado un cliente nuevo";
+    io.emit("notificación", response);
     res.json(removeDrug);
   } catch (error) {
     res.json({ message: error });

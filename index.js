@@ -4,7 +4,7 @@ const http = require("http");
 const socketIo = require("socket.io");
 
 const app = express();
-const port = 3000;
+const port = 4001;
 const mongoose = require("mongoose");
 
 const bodyParser = require("body-parser");
@@ -14,6 +14,12 @@ require("dotenv/config");
 //Middleways
 app.use(cors());
 app.use(bodyParser.json());
+app.use(function (req, res, next) {
+  //console.log("El io:", io);
+  req.io = io;
+  next();
+});
+
 //Routes
 const homeRoute = require("./routes/home");
 const drugRoute = require("./routes/drugs");
@@ -36,8 +42,11 @@ const io = socketIo(server, {
   },
 });
 
+//console.log("el io socker en el index.js--", io);
+
 io.on("connection", (socket) => {
   console.log("New client connected");
+
   socket.on("disconnect", () => {
     console.log("Client disconnected");
   });
