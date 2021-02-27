@@ -2,7 +2,7 @@
 
 Web socker implementacion
 
-##Notes:
+## Notes:
 
 1. A React client was created to test the socket io functionality live.
    Inside the client folder run: npm install, and then npm start
