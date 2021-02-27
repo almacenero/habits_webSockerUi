@@ -15,7 +15,6 @@ require("dotenv/config");
 app.use(cors());
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
-  //console.log("El io:", io);
   req.io = io;
   next();
 });
@@ -41,8 +40,6 @@ const io = socketIo(server, {
     credentials: true,
   },
 });
-
-//console.log("el io socker en el index.js--", io);
 
 io.on("connection", (socket) => {
   console.log("New client connected");
